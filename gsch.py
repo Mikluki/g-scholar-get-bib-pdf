@@ -79,15 +79,15 @@ def write_to_file(bibtex, fname='out.bib'):
         f.write('\n')
 
 
-def read_savepath_as_input():
-    savepath = ''
-    print('Enter dir where to save bibfile. If it is script\'s working dir, press "q"')
-    for line in sys.stdin:
-        if 'q' == line.strip():
-            break
-        savepath = line.strip()+'/'
-        break
-    return savepath
+# def read_savepath_as_input():
+#     savepath = ''
+#     print('Enter dir where to save bibfile. If it is script\'s working dir, press "q"')
+#     for line in sys.stdin:
+#         if 'q' == line.strip():
+#             break
+#         savepath = line.strip()+'/'
+#         break
+#     return savepath
 
 
 def search_pubs_in_bib(bib: str, pubs:str) -> str:
@@ -134,7 +134,6 @@ if __name__ == "__main__":
     ./google_scholar.py 'ZygOS: Achieving Low Tail Latency for Microsecond-scale Networked Tasks'
     ./google_scholar.py 'Snap: a Microkernel Approach to Host Network' -f ref.bib
 """
-    savepath = read_savepath_as_input()
 
     parser = argparse.ArgumentParser(description="Get bibtex from Google Scholar",
             epilog=example_text,
@@ -163,7 +162,7 @@ if __name__ == "__main__":
         bibtex = get_bibtex_for_pubs(pub)
 
         print(bibtex)
-        write_to_file(bibtex, fname=savepath+'out.bib')
+        # write_to_file(bibtex, fname='out.bib')
 
     if args.f and query_yes_no(f"Add this entry to {args.f}?"):
         prepend_to_bib(bibtex, args.f)
