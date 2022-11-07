@@ -1,0 +1,4 @@
+scholarly
+fuzzy_match
+bibtexparser
+regex
