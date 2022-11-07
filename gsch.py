@@ -1,20 +1,17 @@
 #!/usr/bin/env python3
 
 # /bin/python3 /home/mik/Downloads/bib-download/gsch_batch.py -a "" "" ""
+
+### Imports ###
+
 import argparse
 import sys
 
-try:
-    from scholarly import scholarly
-    from fuzzy_match import algorithims
-    import bibtexparser
-    import regex
-except ImportError as e:
-    print("""Install dependencies first using the following command and try again:
+from scholarly import scholarly
+from fuzzy_match import algorithims
+import bibtexparser
+import regex
 
-    pip install scholarly fuzzy_match bibtexparser regex
-""")
-    raise e
 
 
 class NotFoundError(Exception):
