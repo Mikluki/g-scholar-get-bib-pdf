@@ -58,7 +58,7 @@ def get_bibtex_for_pubs(pubs: str) -> str:
     """Returns bibtex"""
     search_query = scholarly.search_pubs(pubs)
     for result in search_query:
-        if args.m != None:
+        if args.m != True:
             return scholarly.bibtex(result)
         else:
             if query_bib_title(result["bib"]):
@@ -132,11 +132,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Get bibtex from Google Scholar",
             epilog=example_text,
             formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('pubs', type=str, nargs='+', help="publication title")
-    parser.add_argument('-m', action='store_true', help="manually accept 1st successful search")
-    # parser.add_argument('-f', metavar='bibtex', help="look up this bibtex before searching Google Scholar")
+    parser.add_argument('pubs', type=str, nargs='+', help="publication titles")
+    parser.add_argument('-m', action='store_true', help="manually accept search result")
     args = parser.parse_args()
-    # print(args.f)
+    print(args.m)
 
 
     for i, pub in enumerate(args.pubs):
