@@ -1,0 +1,17 @@
+"Bandurin, D. A. et al. Resonant terahertz detection using graphene plasmons. Nature Communications 9, 1-8 (2018)."
+<!-- "SCONTEL. http://www.scontel.ru."
+"QMC Instruments Ltd. http://www.terahertz.co.uk."
+"Infrared Laboratories, Inc. https://www.infraredlaboratories.com." -->
+"Alsop, D. C., Inman, C., Lange, A. E. \& Wilbanks, T. Design and construction of high-sensitivity, infrared bolometers for operation at $300 \mathrm{mK}$. Applied Optics 31, 6610-6615 (1992)."
+"Tanaka, S. T. et al. 100-mK bolometric receiver for low-background astronomy. In Infrared Detectors and Instrumentation, vol. 1946, 110-115 (International Society for Optics and Photonics, 1993)."
+"Hubmayr, J. et al. Photon-noise limited sensitivity in titanium nitride kinetic inductance detectors. Applied Physics Letters 106, 073505 (2015)."
+"Monfardini, A. et al. A dual-band millimeter-wave kinetic inductance camera for the IRAM $30 \mathrm{~m}$ telescope. The Astrophysical Journal Supplement Series 194, 24 (2011)."
+"Kleinschmidt, P. et al. A highly sensitive detector for radiation in the terahertz region. IEEE Transactions On Instrumentation and Measurement 56, 463-467 (2007)."
+"Dai, J.-H., Lee, J.-H., Lin, Y.-L. \& Lee, S.-C. In(Ga)As quantum rings for terahertz detectors. Japanese Journal of Applied Physics 47, 2924 (2008)."
+<!-- "Terasense Group, Inc. https://terasense.com/." -->
+"Vicarelli, L. et al. Graphene field-effect transistors as room-temperature terahertz detectors. Nature Materials 11, 865-871 (2012)."
+"Generalov, A. A., Andersson, M. A., Yang, X., Vorobiev, A. \& Stake, J. A 400-GHz graphene FET detector. IEEE Transactions on Terahertz Science and Technology 7, 614-616 (2017)."
+"Bandurin, D. A. et al. Dual origin of room temperature sub-terahertz photoresponse in graphene field effect transistors. Appl. Phys. Lett. 112, 141101 (2018)."
+"Bauer, M. et al. A high-sensitivity AlGaN/GaN HEMT terahertz detector with integrated broadband bow-tie antenna. IEEE Transactions on Terahertz Science and Technology 9, 430-444 (2019)."
+"Zagrajek, P. et al. Time resolution and dynamic range of field-effect transistor-based terahertz detectors. Journal of Infrared, Millimeter, and Terahertz Waves 40, 703-719 (2019)."
+"FerrerasMayo, M., Cibiraite-Lukenskiene, D., Lisauskas, A., Grajal, J. \& Krozer, V. Broadband sensing around 1 THz via a novel biquad-antenna-coupled low-NEP detector in CMOS. IEEE Transactions on Terahertz Science and Technology (2020)."

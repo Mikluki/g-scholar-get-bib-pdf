@@ -58,7 +58,7 @@ def get_bibtex_for_pubs(pubs: str) -> str:
     """Returns bibtex"""
     search_query = scholarly.search_pubs(pubs)
     for result in search_query:
-        if args.a == True:
+        if args.m != None:
             return scholarly.bibtex(result)
         else:
             if query_bib_title(result["bib"]):
@@ -126,38 +126,24 @@ def prepend_to_bib(new_entry: str, bibfile: str):
 
 if __name__ == "__main__":
     example_text = """Examples:
-    ./google_scholar.py 'ZygOS: Achieving Low Tail Latency for Microsecond-scale Networked Tasks'
-    ./google_scholar.py 'Snap: a Microkernel Approach to Host Network' -f ref.bib
+    ./gsch.py 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
 """
 
     parser = argparse.ArgumentParser(description="Get bibtex from Google Scholar",
             epilog=example_text,
             formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('pubs', type=str, nargs='+', help="publication title")
-    parser.add_argument('-f', metavar='bibtex', help="look up this bibtex before searching Google Scholar")
-    parser.add_argument('-a', action='store_const', const=True, metavar='auto', help="automatically accept 1st successful search")
+    parser.add_argument('-m', action='store_true', help="manually accept 1st successful search")
+    # parser.add_argument('-f', metavar='bibtex', help="look up this bibtex before searching Google Scholar")
     args = parser.parse_args()
     # print(args.f)
 
 
-    if args.f is not None:
-        for pub in args.pubs:
-            try:
-                print(f"Searching the {args.f} file")
-                bibtex_id = search_pubs_in_bib(args.f, pub)
-                print(bibtex_id)
-                exit(0)
-            except NotFoundError:
-                print(f"Cannot find '{pub}' in {args.f}")
-
-    # print("Searching on Google Scholar")
-    # print('Bibfile location: ', savepath)
     for i, pub in enumerate(args.pubs):
         print(f"# Searching key words: {pub}")
         bibtex = get_bibtex_for_pubs(pub)
 
         print(bibtex)
-        # write_to_file(bibtex, fname='out.bib')
+        write_to_file(bibtex, fname='out.bib')
 
-    if args.f and query_yes_no(f"Add this entry to {args.f}?"):
-        prepend_to_bib(bibtex, args.f)
+
