@@ -149,7 +149,7 @@ def make_filename(bib):
 if __name__ == "__main__":
     example_text = """Examples:
     ./gsch.py 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
-    ./gsch.py -pdf 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
+    ./gsch.py -pdf 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors' 'Del Rio Castillo A E et al 2018 High-yield production of 2D crystals by wet-jet milling Mater' 'Karagiannidis P G et al 2017 Microfluidization of graphite and formulation of graphene-based conductive inks ACS Nano'
     """
     description = "Get bibtex from Google Scholar and download pdf"
 
