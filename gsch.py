@@ -6,10 +6,11 @@ import argparse
 import sys
 
 from scholarly import scholarly
+from scholarly.data_types import Publication
+from scholarly.publication_parser import PublicationParser
 from fuzzy_match import algorithims
 import bibtexparser
 import regex
-
 
 
 class NotFoundError(Exception):
@@ -60,19 +61,19 @@ def get_bibtex_for_pubs(pubs: str) -> str:
     search_query = scholarly.search_pubs(pubs)
     for result in search_query:
         if args.m != True:
-            print(result)
-            return scholarly.bibtex(result)
+            return result['pub_url'], scholarly.bibtex(result)
         else:
             if query_bib_title(result["bib"]):
-                return scholarly.bibtex(result)
+                return result['pub_url'], scholarly.bibtex(result)
 
     raise NotFoundError(f"Can't find {pubs}")
 
 
-def write_to_file(bibtex, fname='out.bib'):
+
+def write_to_file(bibtex, url='', fname='out.bib'):
     print(f'Saving to {fname}\n')
     with open(fname, "a") as f:
-        f.write(bibtex+',')
+        f.write(url+'\n'+bibtex)
         f.write('\n')
 
 
@@ -136,15 +137,26 @@ if __name__ == "__main__":
             formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('pubs', type=str, nargs='+', help="publication titles")
     parser.add_argument('-m', action='store_true', help="manually accept search result")
+    parser.add_argument('-pdf', action='store_true', help="download pdf of the article")
+
     args = parser.parse_args()
     # print(args.m)
 
 
     for i, pub in enumerate(args.pubs):
-        print(f"# Searching key words: {pub}")
-        bibtex = get_bibtex_for_pubs(pub)
+        # print(f"# Searching key words: {pub}")
+        # url, bibtex = get_bibtex_for_pubs(pub)
 
-        print(bibtex)
-        write_to_file(bibtex, fname='out.bib')
+        # print(url,'\n',bibtex)
+        # write_to_file(bibtex, url=url, fname='out.bib')
+        url = 'https://ieeexplore.ieee.org/abstract/document/8442169/'
+        if args.pdf == True:
+            sh = SciHub()
+            result = sh._search_direct_url(url)
 
-
+            #
+            # try:
+            #     sh = SciHub()
+            #     result = sh.download(url)
+            # except:
+            #     print(f"Error: SciHub could not download {pub}")
