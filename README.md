@@ -12,6 +12,10 @@ options:
 - -m    &emsp;      manually accept search result
 - -pdf    &emsp;    download pdf of the article via scihub
 
+Saved pdf is automatically named: year_name(delimeter = '-')
+
+Example: 2016_Production-of-highly-monolayer-enriched-dispersions-of-liquid-exfoliated-nanosheets-by-liquid-cascade-centrifugation.pdf
+
 Examples:
 
     ./gsch.py 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
