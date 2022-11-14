@@ -1,6 +1,8 @@
-usage: gsch.py [-h] [-m] [-pdf] pubs [pubs ...]
+Based on:
+- https://github.com/Tishacy/SciDownl
+- https://github.com/scholarly-python-package/scholarly
 
-Script for batch download of bib files and corresponding pdfs
+usage: gsch.py [-h] [-m] [-pdf] pubs [pubs ...]
 
 positional arguments:
   pubs        publication titles
