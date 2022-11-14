@@ -1,4 +1,4 @@
 scholarly
-fuzzy_match
+scidownl
 bibtexparser
 regex
