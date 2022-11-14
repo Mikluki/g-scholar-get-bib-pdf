@@ -86,22 +86,24 @@ def download_one_paper(url, fname, folder='gsch-pdf'):
 def make_filename(bib):
     biblines = bib.split('\n')
     for line in biblines:
-        line = re.sub(r"\s+", "", line, flags=re.UNICODE)
-        # print(line)
-        if bool(re.search(r'^title={', line)):
+        line_strip = re.sub(r"\s+", "", line, flags=re.UNICODE)
+        if bool(re.search(r'^title={', line_strip)):
             try:
-                title = line.split('title={')[1].split('}')[0]
+                title = line.split('{')[1].split('}')[0]
             except:
                 print("'title' was not found in bib")
                 title = ''
 
-        if bool(re.search(r'^pub_year={', line)):
+        if bool(re.search(r'^pub_year={', line_strip)):
             try:
-                pub_year = line.split('pub_year={')[1].split('}')[0]
+                pub_year = line.split('{')[1].split('}')[0]
             except:
                 print("'pub_year' was not found in bib")
+                pub_year = ''
+
     if pub_year+'-'+title != '':
         return pub_year+'_'+re.sub('[^A-Za-z0-9]+', '-', title)
+        # print(pub_year+'_'+ title)
     else:
         return datetime.now().strftime('%H-%M-%S')
 
