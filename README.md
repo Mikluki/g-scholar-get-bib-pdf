@@ -12,4 +12,5 @@ options:
 
 Examples:
     ./gsch.py 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
+
     ./gsch.py -pdf 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
