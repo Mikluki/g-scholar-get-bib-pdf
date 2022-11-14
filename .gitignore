@@ -5,3 +5,5 @@ out.bib
 *.pdf
 extra.py
 scholarly
+doi_finder.py
+*.log
