@@ -53,12 +53,14 @@ def query_yes_no(question, default="yes"):
 def query_bib_title(bibtex: dict) -> bool:
     return query_yes_no(bibtex["title"])
 
-
+### ======================================================
+# Scholarly get bibtex
 def get_bibtex_for_pubs(pubs: str) -> str:
     """Returns bibtex"""
     search_query = scholarly.search_pubs(pubs)
     for result in search_query:
         if args.m != True:
+            print(result)
             return scholarly.bibtex(result)
         else:
             if query_bib_title(result["bib"]):
@@ -135,7 +137,7 @@ if __name__ == "__main__":
     parser.add_argument('pubs', type=str, nargs='+', help="publication titles")
     parser.add_argument('-m', action='store_true', help="manually accept search result")
     args = parser.parse_args()
-    print(args.m)
+    # print(args.m)
 
 
     for i, pub in enumerate(args.pubs):
