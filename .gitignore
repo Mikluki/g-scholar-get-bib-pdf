@@ -8,3 +8,5 @@ scholarly
 doi_finder.py
 *.log
 scihub
+pdf
+test.ipynb

@@ -4,14 +4,12 @@
 
 import argparse
 import sys
+from scidownl import scihub_download
 
 from scholarly import scholarly
-from scholarly.data_types import Publication
-from scholarly.publication_parser import PublicationParser
 from fuzzy_match import algorithims
-import bibtexparser
-import regex
-
+import re
+from datetime import datetime
 
 class NotFoundError(Exception):
     def __init__(self, message):
@@ -69,7 +67,6 @@ def get_bibtex_for_pubs(pubs: str) -> str:
     raise NotFoundError(f"Can't find {pubs}")
 
 
-
 def write_to_file(bibtex, url='', fname='out.bib'):
     print(f'Saving to {fname}\n')
     with open(fname, "a") as f:
@@ -77,54 +74,75 @@ def write_to_file(bibtex, url='', fname='out.bib'):
         f.write('\n')
 
 
-# def read_savepath_as_input():
-#     savepath = ''
-#     print('Enter dir where to save bibfile. If it is script\'s working dir, press "q"')
-#     for line in sys.stdin:
-#         if 'q' == line.strip():
-#             break
-#         savepath = line.strip()+'/'
-#         break
-#     return savepath
+def download_one_paper(url, fname, folder='gsch-pdf'):
+    fname.replace(' ','-')
+    paper = url
+    paper_type = "pmid"
+    out = f"./{folder}/{fname}"
+    scihub_download(paper, paper_type=paper_type, out=out)
 
 
-def search_pubs_in_bib(bib: str, pubs:str) -> str:
-    """Returns matched bibtex ID"""
-    with open(bib) as bibtex_file:
-        bib_database = bibtexparser.load(bibtex_file)
+def make_filename(bib):
+    biblines = bib.split('\n')
+    for line in biblines:
+        line = re.sub(r"\s+", "", line, flags=re.UNICODE)
+        # print(line)
+        if bool(re.search(r'^title={', line)):
+            try:
+                title = line.split('title={')[1].split('}')[0]
+            except:
+                print("'title' was not found in bib")
+                title = ''
 
-    def match_algo(titlez, key) -> float:
-        if regex.search('(%s){e<=1}' % key, title, flags=regex.IGNORECASE):
-            return 0.8
-        return algorithims.trigram(title, key)
-
-
-    match_threshold = 0.7
-    results : List[Tuple[float, dict]] = []
-
-    for entry in bib_database.entries:
-        if 'title' in entry:
-            score = match_algo(entry['title'], pubs)
-            match_result = (score, entry)
-            results.append(match_result)
-
-    results.sort(key=lambda x: x[0], reverse=True)
-    for result in results:
-        if result[0] >= match_threshold and query_bib_title(result[1]):
-            return result[1]['ID']
-
-    raise NotFoundError(f"no match for 'l{pubs} in {bib}")
+        if bool(re.search(r'^pub_year={', line)):
+            try:
+                pub_year = line.split('pub_year={')[1].split('}')[0]
+            except:
+                print("'pub_year' was not found in bib")
+    if pub_year+'-'+title != '':
+        return pub_year+'_'+re.sub('[^A-Za-z0-9]+', '-', title)
+    else:
+        return datetime.now().strftime('%H-%M-%S')
 
 
-def prepend_to_bib(new_entry: str, bibfile: str):
-    with open(bibfile) as bibtex_file:
-        bib_database = bibtexparser.load(bibtex_file)
 
-    new_database = bibtexparser.loads(new_entry)
-    bib_database.entries.insert(0, new_database.entries[0])
+# def search_pubs_in_bib(bib: str, pubs:str) -> str:
+#     """Returns matched bibtex ID"""
+#     with open(bib) as bibtex_file:
+#         bib_database = bibtexparser.load(bibtex_file)
 
-    with open(bibfile, 'w') as bibtex_file:
-        bibtexparser.dump(bib_database, bibtex_file)
+#     def match_algo(titlez, key) -> float:
+#         if regex.search('(%s){e<=1}' % key, title, flags=regex.IGNORECASE):
+#             return 0.8
+#         return algorithims.trigram(title, key)
+
+
+#     match_threshold = 0.7
+#     results : List[Tuple[float, dict]] = []
+
+#     for entry in bib_database.entries:
+#         if 'title' in entry:
+#             score = match_algo(entry['title'], pubs)
+#             match_result = (score, entry)
+#             results.append(match_result)
+
+#     results.sort(key=lambda x: x[0], reverse=True)
+#     for result in results:
+#         if result[0] >= match_threshold and query_bib_title(result[1]):
+#             return result[1]['ID']
+
+#     raise NotFoundError(f"no match for 'l{pubs} in {bib}")
+
+
+# def prepend_to_bib(new_entry: str, bibfile: str):
+#     with open(bibfile) as bibtex_file:
+#         bib_database = bibtexparser.load(bibtex_file)
+
+#     new_database = bibtexparser.loads(new_entry)
+#     bib_database.entries.insert(0, new_database.entries[0])
+
+#     with open(bibfile, 'w') as bibtex_file:
+#         bibtexparser.dump(bib_database, bibtex_file)
 
 
 if __name__ == "__main__":
@@ -144,19 +162,18 @@ if __name__ == "__main__":
 
 
     for i, pub in enumerate(args.pubs):
-        # print(f"# Searching key words: {pub}")
-        # url, bibtex = get_bibtex_for_pubs(pub)
+        print(f"# Searching key words: {pub}")
+        url, bibtex = get_bibtex_for_pubs(pub)
 
-        # print(url,'\n',bibtex)
-        # write_to_file(bibtex, url=url, fname='out.bib')
-        url = 'https://ieeexplore.ieee.org/abstract/document/8442169/'
+        print(url,'\n',bibtex)
+        write_to_file(bibtex, url=url, fname='out.bib')
+
         if args.pdf == True:
-            sh = SciHub()
-            result = sh._search_direct_url(url)
+            print(f"## Dowloadingig: {pub}")
 
-            #
-            # try:
-            #     sh = SciHub()
-            #     result = sh.download(url)
-            # except:
-            #     print(f"Error: SciHub could not download {pub}")
+            try:
+                fname = make_filename(bibtex)
+                download_one_paper(url, fname, folder='gsch-pdf')
+            except:
+                print(f"Error: SciHub could not download {pub}")
+
