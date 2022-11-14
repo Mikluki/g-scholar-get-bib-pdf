@@ -148,14 +148,16 @@ def make_filename(bib):
 if __name__ == "__main__":
     example_text = """Examples:
     ./gsch.py 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
-"""
+    ./gsch.py -pdf 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
+    """
+    description = "Get bibtex from Google Scholar and download pdf"
 
-    parser = argparse.ArgumentParser(description="Get bibtex from Google Scholar",
+    parser = argparse.ArgumentParser(description=description,
             epilog=example_text,
             formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('pubs', type=str, nargs='+', help="publication titles")
     parser.add_argument('-m', action='store_true', help="manually accept search result")
-    parser.add_argument('-pdf', action='store_true', help="download pdf of the article")
+    parser.add_argument('-pdf', action='store_true', help="download pdf of the article via scihub")
 
     args = parser.parse_args()
     # print(args.m)

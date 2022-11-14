@@ -1,19 +1,15 @@
+usage: gsch.py [-h] [-m] [-pdf] pubs [pubs ...]
 
-# Usage
-
-```
-usage: google_scholar.py [-h] [-f bibtex] pubs
-
-Get bibtex from Google Scholar
+Get bibtex from Google Scholar and download pdf
 
 positional arguments:
-  pubs        publication title
+  pubs        publication titles
 
-optional arguments:
+options:
   -h, --help  show this help message and exit
-  -f bibtex   look up this bibtex before searching Google Scholar
+  -m          manually accept search result
+  -pdf        download pdf of the article via scihub
 
 Examples:
-    ./google_scholar.py 'ZygOS: Achieving Low Tail Latency for Microsecond-scale Networked Tasks'
-    ./google_scholar.py 'Snap: a Microkernel Approach to Host Network' -f ref.bib
-```
+    ./gsch.py 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
+    ./gsch.py -pdf 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
