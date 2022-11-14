@@ -168,7 +168,7 @@ if __name__ == "__main__":
         url, bibtex = get_bibtex_for_pubs(pub)
 
         print(url,'\n',bibtex)
-        write_to_file(bibtex, url=url, fname='out.bib')
+        write_to_file(bibtex, url=url, fname='lit.bib')
 
         if args.pdf == True:
             print(f"## Dowloadingig: {pub}")
