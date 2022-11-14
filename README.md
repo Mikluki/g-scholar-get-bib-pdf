@@ -6,9 +6,9 @@ positional arguments:
   pubs        publication titles
 
 options:
-  -h, --help  show this help message and exit
-  -m          manually accept search result
-  -pdf        download pdf of the article via scihub
+    -h, --help  show this help message and exit
+    -m          manually accept search result
+    -pdf        download pdf of the article via scihub
 
 Examples:
 
