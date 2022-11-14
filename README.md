@@ -11,6 +11,6 @@ options:
   -pdf        download pdf of the article via scihub
 
 Examples:
-    ./gsch.py 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
 
+    ./gsch.py 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
     ./gsch.py -pdf 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
