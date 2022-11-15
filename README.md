@@ -2,15 +2,18 @@ Based on:
 - https://github.com/Tishacy/SciDownl
 - https://github.com/scholarly-python-package/scholarly
 
+__Important:__ scholarly is set up without proxy. Google scholar does not like bots, which means that sometimes your ip can be temporarily blocked (maybe several minutes). So idealy you want to set up your own proxy. Block criteria unclear. If it happened you can temporarily use vpn. I suppose the number of queries is limited for some period of time. Nonetheless, script was successfully tested for 25 publications several times.
+
+
 usage: gsch.py [-h] [-m] [-pdf] pubs [pubs ...]
 
-positional arguments:
-  pubs        publication titles
+positional arguments: 
+pubs  &emsp;     publication titles
 
-options:
-- -h, &emsp; --help  show this help message and exit
-- -m    &emsp;      manually accept search result
-- -pdf    &emsp;    download pdf of the article via scihub
+options: 
+-h, &emsp; --help  show this help message and exit 
+-m    &emsp;      manually accept search result 
+-pdf    &emsp;    download pdf of the article via scihub 
 
 Saved pdf is automatically named: year_name(delimeter = '-')
 
