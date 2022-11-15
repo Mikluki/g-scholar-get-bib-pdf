@@ -1,5 +1,9 @@
 ## Description
-Small script for batch download of bib files and corresponding pdf files, which uses publication titles (or bibliorgaphy references) as arguments
+Small script for batch download of bib files and corresponding pdf files, which uses publication titles (or bibliorgaphy references) as arguments.
+- bibligraphy and publication url are automatically appended to the lit.bib file
+- Saved pdfs are automatically named: year_name(delimeter = '-')  
+    >2016_Production-of-highly-monolayer-enriched-dispersions-of-liquid-exfoliated-nanosheets-by-liquid-cascade-centrifugation.pdf
+
 ### Based on
 - https://github.com/Tishacy/SciDownl
 - https://github.com/scholarly-python-package/scholarly
@@ -11,17 +15,13 @@ Scholarly is used without proxy. Google scholar does not like bots, which means 
 ## Usage 
     gsch.py [-h] [-m] [-pdf] pubs [pubs ...]
 
-Positional arguments:  
+__Positional arguments:__  
     pubs  &emsp;     publication titles  
 
-Options:  
+__Options:__  
 -h, --help&emsp;&emsp;show this help message and exit  
 -m    &emsp;&emsp; &emsp; &emsp;manually accept search result  
 -pdf &emsp;&emsp;&emsp;&emsp;download pdf of the article via scihub  
-
-Saved pdf is automatically named: year_name(delimeter = '-')
-
-Example:   2016_Production-of-highly-monolayer-enriched-dispersions-of-liquid-exfoliated-nanosheets-by-liquid-cascade-centrifugation.pdf
 
 ### Examples:
 
