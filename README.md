@@ -9,7 +9,7 @@ Script for batch download of bib files and corresponding pdf files, which uses p
 - https://github.com/scholarly-python-package/scholarly
 
 ### Important
-Scholarly is used without proxy. Google scholar does not like bots, which means that sometimes your ip can be temporarily blocked (maybe several minutes). So ideally you want to set up your own proxy. Block criteria unclear. If it happened you can temporarily use vpn. I suppose the number of queries is limited for some period of time. Nonetheless, script was successfully tested for 25 publications several times.
+Scholarly is used without proxy. Google scholar does not like bots, which means that sometimes your ip can be temporarily blocked (maybe several minutes). So ideally you want to set up your own proxy. Block criteria unclear. If it happened you can temporarily use vpn. I suppose the number of queries per some period of time is limited. Nonetheless, script was successfully tested for 25 publications several times.
 
 
 ## Usage 
