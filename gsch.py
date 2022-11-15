@@ -153,12 +153,12 @@ if __name__ == "__main__":
     ./gsch.py 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors'
     ./gsch.py -pdf 'Steep-Slope Hysteresis-Free Negative-Capacitance 2D Transistors' 'Del Rio Castillo A E et al 2018 High-yield production of 2D crystals by wet-jet milling Mater' 'Karagiannidis P G et al 2017 Microfluidization of graphite and formulation of graphene-based conductive inks ACS Nano'
     """
-    description = "cript for batch download of bib files and corresponding pdfs"
+    description = "script for batch download of bib files and corresponding pdfs"
 
     parser = argparse.ArgumentParser(description=description,
             epilog=example_text,
             formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('pubs', type=str, nargs='+', help="publication titles")
+    parser.add_argument('pubs', type=str, nargs='+', help="publication titles separated with space")
     parser.add_argument('-m', action='store_true', help="manually accept search result")
     parser.add_argument('-pdf', action='store_true', help="download pdf of the article via scihub")
 

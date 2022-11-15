@@ -16,7 +16,7 @@ Scholarly is used without proxy. Google scholar does not like bots, which means 
     gsch.py [-h] [-m] [-pdf] pubs [pubs ...]
 
 __Positional arguments:__  
-    pubs  &emsp;     publication titles  
+    pubs  &emsp;&emsp; &emsp;    publication titles separated with space  
 
 __Options:__  
 -h, --help&emsp;&emsp;show this help message and exit  
