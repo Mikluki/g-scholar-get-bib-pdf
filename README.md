@@ -1,5 +1,5 @@
 ## Description
-Small script for batch download of bib files and corresponding pdf files, which uses publication titles (or bibliorgaphy references) as arguments.
+Script for batch download of bib files and corresponding pdf files, which uses publication titles (or bibliorgaphy references) as arguments.
 - bibligraphy and publication url are automatically appended to the lit.bib file
 - Saved pdfs are automatically named: year_name(delimeter = '-')  
     >2016_Production-of-highly-monolayer-enriched-dispersions-of-liquid-exfoliated-nanosheets-by-liquid-cascade-centrifugation.pdf
