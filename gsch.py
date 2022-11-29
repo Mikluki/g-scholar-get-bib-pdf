@@ -68,6 +68,18 @@ def get_bibtex_for_pubs(pubs: str) -> str:
     raise NotFoundError(f"Can't find {pubs}")
 
 
+def add_url_to_bib(bib, url):
+    print(bib, '\n')
+    biblines = bib.split('\n')
+    for i, line in enumerate(biblines):
+        line_strip = re.sub(r"\s+", "", line, flags=re.UNICODE)
+        # print(lne)
+        if bool(re.search(r'^title={', line_strip)):
+            # print('1',line)
+            biblines[i] = line.replace('}', '}}').replace('{', '{\href{%s}{' % url)
+    return '\n'.join(biblines)
+
+
 def write_to_file(bibtex, url='', fname='out.bib'):
     print(f'Saving to {fname}\n')
     with open(fname, "a") as f:
@@ -169,7 +181,7 @@ if __name__ == "__main__":
     for i, pub in enumerate(args.pubs):
         print(f"# Searching key words: {pub}")
         url, bibtex = get_bibtex_for_pubs(pub)
-
+        bibtex = add_url_to_bib(url, bibtex)
         print(url,'\n',bibtex)
         write_to_file(bibtex, url=url, fname='lit.bib')
 
