@@ -69,7 +69,7 @@ def get_bibtex_for_pubs(pubs: str) -> str:
 
 
 def add_url_to_bib(bib, url):
-    print(bib, '\n')
+    # print(bib, '\n')
     biblines = bib.split('\n')
     for i, line in enumerate(biblines):
         line_strip = re.sub(r"\s+", "", line, flags=re.UNICODE)
@@ -181,7 +181,7 @@ if __name__ == "__main__":
     for i, pub in enumerate(args.pubs):
         print(f"# Searching key words: {pub}")
         url, bibtex = get_bibtex_for_pubs(pub)
-        # bibtex = add_url_to_bib(url, bibtex)
+        bibtex = add_url_to_bib(bibtex,url)
         print(url,'\n',bibtex)
         write_to_file(bibtex, url=url, fname='lit.bib')
 
