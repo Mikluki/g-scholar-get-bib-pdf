@@ -101,7 +101,7 @@ def make_filename(bib):
         line_strip = re.sub(r"\s+", "", line, flags=re.UNICODE)
         if bool(re.search(r'^title={', line_strip)):
             try:
-                title = line.split('{')[1].split('}')[0]
+                title = line.split('{')[-1].split('}')[0]
             except:
                 print("'title' was not found in bib")
                 title = ''
